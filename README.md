@@ -12,3 +12,7 @@ The idea is to write it as Webfrontend using php and mysql at the server.
 More informations in the wike from bedaplan on github.
 
 Contact: a.nitschke@senft-betonbohren.de
+
+
+
+or visit the company behind bedaplan: www.senft-betonbohren.de
