@@ -1,0 +1,58 @@
+<html>
+ <head>
+  <title>bedaplan</title>
+ </head>
+ <body>
+ 
+  <table border=1>
+   <tr>
+    
+    <td>
+ 	<!-- Kostenstelle hier erfassen -->
+	Kostenstelle ausw&auml;len:<br>
+	<form action="input_button.htm">
+	  <p>
+    	  <textarea cols="20" rows="1" name="kostenstelle"></textarea><br>
+          <input type="button" name="beton" value="Beton"
+          onclick="this.form.kostenstelle.value='Kostenstelle Beton'">
+          <input type="button" name="dach" value="Dach"
+          onclick="this.form.kostenstelle.value='Kostenstelle Dach'">
+          </p>
+        </form>
+    </td>
+
+    <td>
+      Projektbeschreibung:<br>
+      <textarea cols="20" rows="5" name="projekttext">Baustelle einrichten, Wasser mitbringen, 4 Loecher a 100mm bohren ...
+      </textarea><br>
+    </td>
+
+   </tr>
+
+
+   <tr>
+
+    <td>
+	<!-- Zeiterfassung hier rein -->
+	Anwesendheit angeben:<br>
+	<form action="input_button.htm">
+	  <p>
+    		<textarea cols="10" rows="1" name="textfeld"></textarea><br>
+	        <input type="button" name="Anmelden" value="Anmelden"
+	        onclick="this.form.textfeld.value='Anwesend'">
+	        <input type="button" name="Abmelden" value="Abmelden"
+	        onclick="this.form.textfeld.value='Abwesend'">
+  </p>
+</form>
+    </td>
+
+    <td>Weitere Tagesprojekte:<br>
+        - Herten, Deckendurchbruch <br>
+ 	- Dorsten, 4 Betonbohrungen
+     </td>
+
+   </tr>
+  </table>
+  
+ </body>
+</html>
