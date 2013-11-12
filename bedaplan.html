@@ -2,56 +2,101 @@
  <head>
   <title>bedaplan</title>
  </head>
- <body>
- 
-  <table border=1>
+ <body background="background.jpg">
+ <img src="http://213.23.35.50/bedaplan/bedaplanlogo.jpg">
+  <table border="3" frame="void">
    <tr>
-    
-    <td>
+
+      <td width="260">
  	<!-- Kostenstelle hier erfassen -->
 	Kostenstelle ausw&auml;len:<br>
 	<form action="input_button.htm">
 	  <p>
-    	  <textarea cols="20" rows="1" name="kostenstelle"></textarea><br>
-          <input type="button" name="beton" value="Beton"
-          onclick="this.form.kostenstelle.value='Kostenstelle Beton'">
-          <input type="button" name="dach" value="Dach"
-          onclick="this.form.kostenstelle.value='Kostenstelle Dach'">
+    	   <textarea cols="20" rows="1" name="kostenstelle"></textarea><br>
+           <input type="button" name="beton" value="Beton"
+           onclick="this.form.kostenstelle.value='Kostenstelle Beton'">
+           <input type="button" name="dach" value="Dach"
+           onclick="this.form.kostenstelle.value='Kostenstelle Dach'">
+          </p>
+	  <p>
+	    <select name="projektname" size="1">
+	     <option>Kreissparkasse</option>
+	     <option>Flughafen</option>
+	     <option>Halle Nürnberg</option>
+	     <option>Bunkerumbau</option>
+    	    </select>
+          </p>
+        </form>
+      </td>
+
+      <td width="260">
+       Projektbeschreibung:<br>
+       <textarea cols="20" rows="5" name="projekttext">Baustelle einrichten, Wasser mitbringen, 4 Loecher a 100mm bohren ...
+       </textarea><br>
+      </td>
+
+   </tr>
+
+
+   <tr>
+
+    <td>
+	<!-- Projekt-Zeiterfassung hier rein -->
+	Projektzeit Erfassen:<br>
+	<form action="input_button.htm">
+	  <p>
+    		<textarea cols="20" rows="1" name="textfeld"></textarea><br>
+	        <input type="button" name="Ankunft" value="Ankunft"
+	        onclick="this.form.textfeld.value='<?php $timeget = time(); $datum = date("d.m.Y",$timeget); echo $datum; ?>;<?php $timeget = time(); $uhrzeit = date("H:i",$timeget); echo $uhrzeit; ?>'">
+	        <input type="button" name="Abfahrt" value="Abfahrt"
+	        onclick="this.form.textfeld.value='<?php $timeget = time(); $datum = date("d.m.Y",$timeget); echo $datum; ?>;<?php $timeget = time(); $uhrzeit = date("H:i",$timeget); echo $uhrzeit; ?>'">
           </p>
         </form>
     </td>
 
     <td>
-      Projektbeschreibung:<br>
-      <textarea cols="20" rows="5" name="projekttext">Baustelle einrichten, Wasser mitbringen, 4 Loecher a 100mm bohren ...
-      </textarea><br>
+        Weitere Tagesprojekte:<br>
+        - Herten, Deckendurchbruch <br>
+ 	- Dorsten, 4 Betonbohrungen
     </td>
 
    </tr>
-
 
    <tr>
 
     <td>
-	<!-- Zeiterfassung hier rein -->
-	Anwesendheit angeben:<br>
-	<form action="input_button.htm">
+      <!-- Arbeitszeit-Erfassuhng hier rein -->
+        Arbeitszeit Erfassung:<br>
+      	<form action="arbeitszeit.html">
 	  <p>
-    		<textarea cols="10" rows="1" name="textfeld"></textarea><br>
-	        <input type="button" name="Anmelden" value="Anmelden"
-	        onclick="this.form.textfeld.value='Anwesend'">
-	        <input type="button" name="Abmelden" value="Abmelden"
-	        onclick="this.form.textfeld.value='Abwesend'">
-  </p>
-</form>
+    		<textarea cols="20" rows="1" name="textfeld"></textarea><br>
+	        <input type="button" name="Arbeitsbeginn" value="Arbeitsbeginn"
+	        onclick="this.form.textfeld.value='<?php $timeget = time(); $datum = date("d.m.Y",$timeget); echo $datum; ?>;<?php $timeget = time(); $uhrzeit = date("H:i",$timeget); echo $uhrzeit; ?>'">
+	        <input type="button" name="Arbeitsende" value="Arbeitsende"
+	        onclick="this.form.textfeld.value='<?php $timeget = time(); $datum = date("d.m.Y",$timeget); echo $datum; ?>;<?php $timeget = time(); $uhrzeit = date("H:i",$timeget); echo $uhrzeit; ?>'">
+                <input type="button" name="Krank" value="Krank"
+	        onclick="this.form.textfeld.value='Krank'">
+          </p>
+        </form>
+
     </td>
 
-    <td>Weitere Tagesprojekte:<br>
-        - Herten, Deckendurchbruch <br>
- 	- Dorsten, 4 Betonbohrungen
-     </td>
+    <td> 
+	<!-- hier kommt die erweiterte Fotofunktion rein -->
+	
+	<form action="input_file.htm" method="post" enctype="multipart/form-data">
+	  <p>Bild zum Projekt hinzuf&uuml;gen:<br>
+	   <input name="Datei" type="file" size="50" maxlength="100000" accept="text/*">
+  	  </p>
+	Mitarbeiter: Dirk
+       </form>
+
+    </td>
 
    </tr>
+
+   
+
   </table>
   
  </body>
