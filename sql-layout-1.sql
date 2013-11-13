@@ -45,3 +45,9 @@ CREATE TABLE  `bedaplan`.`current` (
 `current_employee` TEXT NOT NULL ,
 PRIMARY KEY (  `current_id` )
 ) ENGINE = MYISAM ;
+
+CREATE USER 'bedaplan'@'localhost' IDENTIFIED BY  '***';
+
+GRANT ALL PRIVILEGES ON * . * TO  'bedaplan'@'localhost' IDENTIFIED BY  '***' WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+
+GRANT ALL PRIVILEGES ON  `bedaplan` . * TO  'bedaplan'@'localhost';
