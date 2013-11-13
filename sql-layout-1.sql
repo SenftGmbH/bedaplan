@@ -30,6 +30,7 @@ CREATE TABLE  `bedaplan`.`project` (
 `project_nr` BIGINT NOT NULL ,
 `project_description` TEXT NOT NULL ,
 `project_employee` TEXT NOT NULL ,
+`project_done` SMALLINT NOT NULL ,
 `project_free1` TEXT NOT NULL ,
 `project_free2` TEXT NOT NULL ,
 `project_free3` TEXT NOT NULL ,
