@@ -38,3 +38,10 @@ CREATE TABLE  `bedaplan`.`project` (
 `project_free6` REAL NOT NULL ,
 PRIMARY KEY (  `project_id` )
 ) ENGINE = MYISAM ;
+
+CREATE TABLE  `bedaplan`.`current` (
+`current_id` BIGINT NOT NULL AUTO_INCREMENT ,
+`current_nr` BIGINT NOT NULL ,
+`current_employee` TEXT NOT NULL ,
+PRIMARY KEY (  `current_id` )
+) ENGINE = MYISAM ;
