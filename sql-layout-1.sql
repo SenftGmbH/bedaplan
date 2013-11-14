@@ -47,8 +47,17 @@ CREATE TABLE  `bedaplan`.`current` (
 PRIMARY KEY (  `current_id` )
 ) ENGINE = MYISAM ;
 
+CREATE TABLE  `bedaplan`.`vehicle` (
+`vehicle_id` BIGINT NOT NULL AUTO_INCREMENT ,
+`vehicle_employee` VARCHAR( 25 ) NOT NULL ,
+`vehicle_date` VARCHAR( 10 ) NOT NULL ,
+`vehicle_free` VARCHAR( 256 ) NOT NULL ,
+PRIMARY KEY (  `vehicle_id` )
+) ENGINE = MYISAM ;
+
 CREATE USER 'bedaplan'@'localhost' IDENTIFIED BY  '***';
 
 GRANT ALL PRIVILEGES ON * . * TO  'bedaplan'@'localhost' IDENTIFIED BY  '***' WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
 
 GRANT ALL PRIVILEGES ON  `bedaplan` . * TO  'bedaplan'@'localhost';
+
