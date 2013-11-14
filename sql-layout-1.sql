@@ -10,7 +10,7 @@ CREATE TABLE  `bedaplan`.`worktime` (
 `wt_employee` TEXT NOT NULL ,
 `wt_start` TIMESTAMP NOT NULL ,
 `wt_stop` TIMESTAMP NOT NULL ,
-`wt_sort` DATE NOT NULL ,
+`wt_sort` VARCHAR( 10 ) NOT NULL ,
 PRIMARY KEY (  `worktimeid` )
 ) ENGINE = MYISAM ;
 
