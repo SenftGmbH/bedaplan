@@ -20,13 +20,13 @@ CREATE TABLE  `bedaplan`.`projecttime` (
 `pt_employee` TEXT NOT NULL ,
 `pt_start` TIMESTAMP NOT NULL ,
 `pt_stop` TIMESTAMP NOT NULL ,
-`pt_sort` DATE NOT NULL ,
+`pt_sort` VARCHAR( 10 ) NOT NULL ,
 PRIMARY KEY (  `pt_id` )
 ) ENGINE = MYISAM ;
 
 CREATE TABLE  `bedaplan`.`project` (
 `project_id` BIGINT NOT NULL AUTO_INCREMENT ,
-`project_date` DATE NOT NULL ,
+`project_date` VARCHAR( 10 ) NOT NULL ,
 `project_nr` BIGINT NOT NULL ,
 `project_description` TEXT NOT NULL ,
 `project_employee` TEXT NOT NULL ,
