@@ -7,7 +7,7 @@
   <img src="http://213.23.35.50/bedaplan/bedaplanlogo.jpg">
   <p align="right"><font size="5">Admin - Create Project</font></p>
   <hr>
-  <!-- Das Formular nimmt die Daten entgegen und gibt sie an die create_project.php weiter -->
+  <!-- this formular collect the data for create_project.php  -->
 
   <form action="http://213.23.35.50/bedaplan/create_project.php" method="post">
     <p>Projektdatum: <input name="project_date" type="text" size="30" maxlength="30"></p>
@@ -17,10 +17,10 @@
     </p>
 
     <select name="project_employee" size="3">
-      <option>Mitarbeiter1</option>
-      <option>Mitarbeiter2</option>
-      <option>Mitarbeiter3</option>
-      <option>Mitarbeiter4</option>
+      <option>akoenig</option>
+      <option>dgrzesinski</option>
+      <option>sbodner</option>
+      <option>shagen</option>
 
     </select>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
