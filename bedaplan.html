@@ -1,3 +1,22 @@
+
+<?php
+// connect to the database
+$db = mysqli_connect("localhost", "user", "password", "database");
+
+// and show if there any errors
+if(!$db)
+{
+  exit("Verbindungsfehler: ".mysqli_connect_error());
+}
+	$timestamp = time();
+	$datum = date("d.m.Y",$timestamp);
+	$bedaplan_query = "SELECT * FROM project WHERE project_date = '$datum' AND project_done = '0' AND project_employee = 'sb'";
+	$bedaplan_result = mysqli_query($db, $bedaplan_query);
+	$row = $bedaplan_result->fetch_assoc();
+	$current_nr = $row["project_nr"];
+	
+?>
+
 <html>
  <head>
   <title>bedaplan</title>
@@ -29,9 +48,22 @@
         </form>
       </td>
 
+<!-- load the project description from the database and show it
+     for this compare the projektdate with the current-date and the status
+     of the project -->
       <td width="260">
        Projektbeschreibung:<br>
-       <textarea cols="20" rows="5" name="projekttext">Baustelle einrichten, Wasser mitbringen, 4 Loecher a 100mm bohren ...
+       <textarea cols="20" rows="5" name="projekttext"><?php
+	// here we look after the current date        
+	$timestamp = time();
+	$datum = date("d.m.Y",$timestamp);
+	
+	// select the project after status, current daten and employee
+	$bedaplan_query = "SELECT * FROM project WHERE project_date = '$datum' AND project_done = '0' AND project_employee = 'sb'";
+	$bedaplan_result = mysqli_query($db, $bedaplan_query);
+	$row = $bedaplan_result->fetch_assoc();
+	echo $row["project_description"];
+        ?>
        </textarea><br>
       </td>
 
@@ -41,15 +73,23 @@
    <tr>
 
     <td>
-	<!-- Projekt-Zeiterfassung hier rein -->
+	<!-- project planner  -->
 	Projektzeit Erfassen:<br>
 	<form action="input_button.htm">
 	  <p>
-    		<textarea cols="20" rows="1" name="textfeld"></textarea><br>
+    		Aktuelle Projektnummer:
+		<?php echo $current_nr; ?><br>
+		<!-- here we show the current time in the field and add the timestamp to the database -->
 	        <input type="button" name="Ankunft" value="Ankunft"
-	        onclick="this.form.textfeld.value='<?php $timeget = time(); $datum = date("d.m.Y",$timeget); echo $datum; ?>;<?php $timeget = time(); $uhrzeit = date("H:i",$timeget); echo $uhrzeit; ?>'">
+	        onclick="window.open('http://192.168.100.4/bedaplan/update_projecttime.php?current_nr=<?php echo $current_nr ?>&current_user=sb')">
+		
+
+		
+
+				
+		
 	        <input type="button" name="Abfahrt" value="Abfahrt"
-	        onclick="this.form.textfeld.value='<?php $timeget = time(); $datum = date("d.m.Y",$timeget); echo $datum; ?>;<?php $timeget = time(); $uhrzeit = date("H:i",$timeget); echo $uhrzeit; ?>'">
+	        onclick="window.open('http://192.168.100.4/bedaplan/update_projecttime2.php?current_nr=<?php echo $current_nr ?>&current_user=sb')">
           </p>
         </form>
     </td>
@@ -65,31 +105,44 @@
    <tr>
 
     <td>
-      <!-- Arbeitszeit-Erfassuhng hier rein -->
+      <!-- work time planner -->
         Arbeitszeit Erfassung:<br>
       	<form action="arbeitszeit.html">
 	  <p>
-    		<textarea cols="20" rows="1" name="textfeld"></textarea><br>
+    		
 	        <input type="button" name="Arbeitsbeginn" value="Arbeitsbeginn"
-	        onclick="this.form.textfeld.value='<?php $timeget = time(); $datum = date("d.m.Y",$timeget); echo $datum; ?>;<?php $timeget = time(); $uhrzeit = date("H:i",$timeget); echo $uhrzeit; ?>'">
+	        onclick="window.open('http://192.168.100.4/bedaplan/insert_worktime.php?current_nr=&current_user=sb')">
 	        <input type="button" name="Arbeitsende" value="Arbeitsende"
-	        onclick="this.form.textfeld.value='<?php $timeget = time(); $datum = date("d.m.Y",$timeget); echo $datum; ?>;<?php $timeget = time(); $uhrzeit = date("H:i",$timeget); echo $uhrzeit; ?>'">
+	        onclick="window.open('http://192.168.100.4/bedaplan/update_worktime.php?current_nr=&current_user=sb')">
                 <input type="button" name="Krank" value="Krank"
 	        onclick="this.form.textfeld.value='Krank'">
           </p>
         </form>
 
+<!-- Chose the vehicle for the employee -->
+	Fahrzeug ausw&ahlen:<br>
+	 <input type="button" name="RE--101" value="RE--101"
+	        onclick="window.open('http://192.168.100.4/bedaplan/insert_vehicle.php?current_user=sb&vehicle=RE--101')">
+	 <input type="button" name="RE--102" value="RE--102"
+	        onclick="window.open('http://192.168.100.4/bedaplan/insert_vehicle.php?current_user=sb&vehicle=RE--102')"><br>
+	 <input type="button" name="RE--103" value="RE--103"
+	        onclick="window.open('http://192.168.100.4/bedaplan/insert_vehicle.php?current_user=sb&vehicle=RE--103')">
+	 <input type="button" name="RE--104" value="RE--104"
+	        onclick="window.open('http://192.168.100.4/bedaplan/insert_vehicle.php?current_user=sb&vehicle=RE--104')"><br>
+	 <input type="button" name="RE--105" value="RE--105"
+	        onclick="window.open('http://192.168.100.4/bedaplan/insert_vehicle.php?current_user=sb&vehicle=RE--105')">
+
     </td>
 
     <td> 
-	<!-- hier kommt die erweiterte Fotofunktion rein -->
+	<!-- more functions into this field -->
 	
 	<form action="input_file.htm" method="post" enctype="multipart/form-data">
 	  <p>Bild zum Projekt hinzuf&uuml;gen:<br>
 	   <input name="Datei" type="file" size="50" maxlength="100000" accept="text/*">
   	  </p>
-	Mitarbeiter: Dirk
-       </form>
+	</form>
+
 
     </td>
 
@@ -98,6 +151,7 @@
    
 
   </table>
+<font size=1>Projekthomepage: <a href="https://github.com/SenftGmbH" alt="Projektseite">https://github.com/SenftGmbH</a></font>
   
  </body>
 </html>
