@@ -8,7 +8,7 @@
 <br>
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "user", "password", "database");
+$db = mysqli_connect("localhost", "username", "userpassword", "database");
 
 // and show if there any errors
 if(!$db)
@@ -39,6 +39,6 @@ echo $uhrzeit;
 
 ?>
 <script type="text/javascript">
-     window.setTimeout("this.close()",3000);
+     window.setTimeout("this.close()",10000);
         </script>
 </html>
