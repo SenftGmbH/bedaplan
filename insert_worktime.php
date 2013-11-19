@@ -8,7 +8,7 @@
 <br>
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "user", "password", "database");
+$db = mysqli_connect("localhost", "username", "userpassword", "database");
 
 // and show if there any errors
 if(!$db)
@@ -18,7 +18,7 @@ if(!$db)
 
 // lets get the date
 	$timestamp = time();
-	$datum = date("d.m.Y",$timestamp);
+	$datum = date("m.Y",$timestamp);
 
 // get the variables from the mainsite
 $current_user = $_GET["current_user"];
@@ -39,6 +39,6 @@ echo $uhrzeit;
 
 ?>
 <script type="text/javascript">
-     window.setTimeout("this.close()",3000);
+     window.setTimeout("this.close()",5000);
         </script>
 </body>
