@@ -8,7 +8,7 @@
 <br>
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "user", "password", "database");
+$db = mysqli_connect("localhost", "username", "userpassword", "database");
 
 // and show if there any errors
 if(!$db)
@@ -27,6 +27,10 @@ $uhrzeit = date("H:i",$timeget);
 $bedaplan_query = "UPDATE projecttime SET pt_start= NOW() WHERE pt_nr = '$project_nr'"; 
 $bedaplan_result = mysqli_query($db, $bedaplan_query);
 
+// set the project status to working
+$bedaplan_query = "UPDATE project SET project_done='1' WHERE project_nr = '$project_nr'"; 
+$bedaplan_result = mysqli_query($db, $bedaplan_query);
+
 echo "Projektnummer: <br>";
 echo $project_nr;
 echo "<br><br>Startzeit:<br>";
@@ -34,6 +38,6 @@ echo $uhrzeit;
 
 ?>
 <script type="text/javascript">
-     window.setTimeout("this.close()",3000);
+     window.setTimeout("this.close()",5000);
         </script>
 </body>
