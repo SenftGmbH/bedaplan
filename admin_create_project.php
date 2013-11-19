@@ -7,7 +7,7 @@
   <img src="http://213.23.35.50/bedaplan/bedaplanlogo.jpg">
   <p align="right"><font size="5">Admin - Create Project</font></p>
   <hr>
-  <!-- this formular collect the data for create_project.php  -->
+  <!-- Reciving the project data and send it to create_project.php -->
 
   <form action="http://213.23.35.50/bedaplan/create_project.php" method="post">
     <p>Projektdatum: <input name="project_date" type="text" size="30" maxlength="30"></p>
