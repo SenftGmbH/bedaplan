@@ -66,6 +66,14 @@ CREATE TABLE  `bedaplan`.`status` (
 PRIMARY KEY (  `status_id` )
 ) ENGINE = MYISAM ;
 
+CREATE TABLE  `bedaplan`.`message` (
+`me_employee` VARCHAR( 25 ) NOT NULL ,
+`me_content` TEXT NOT NULL ,
+`me_status` INT NOT NULL ,
+`me_free1` TEXT NOT NULL
+) ENGINE = MYISAM ;
+
+
 CREATE USER 'bedaplan'@'localhost' IDENTIFIED BY  '***';
 
 GRANT ALL PRIVILEGES ON * . * TO  'bedaplan'@'localhost' IDENTIFIED BY  '***' WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
