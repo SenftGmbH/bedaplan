@@ -57,6 +57,7 @@ PRIMARY KEY (  `vehicle_id` )
 
 CREATE TABLE  `bedaplan`.`status` (
 `status_id` BIGINT NOT NULL AUTO_INCREMENT ,
+`status_employee` VARCHAR ( 25 ) NOT NULL,
 `status_wt` INT NOT NULL ,
 `status_pt` INT NOT NULL ,
 `status_me` INT NOT NULL ,
