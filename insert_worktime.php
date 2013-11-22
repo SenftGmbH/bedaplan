@@ -8,7 +8,7 @@
 <br>
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "username", "userpassword", "database");
+$db = mysqli_connect("localhost", "user", "password", "database");
 
 // and show if there any errors
 if(!$db)
@@ -26,16 +26,38 @@ $current_user = $_GET["current_user"];
 
 $timeget = time(); 
 $uhrzeit = date("H:i",$timeget); 
-// set the project start time to the current time
+// set the worktime start time to the current time
 
 
-$bedaplan_query = "INSERT INTO worktime (wt_employee, wt_start, wt_sort) VALUES ('$current_user',NOW() ,'$datum')";
-$bedaplan_result = mysqli_query($db, $bedaplan_query);
+// here we query the status of status_wt to look if the employee has logged in yet
+$bedaplan_query = "SELECT * FROM status WHERE status_employee = '$current_user'";
+	$bedaplan_result = mysqli_query($db, $bedaplan_query);
+	$status_raw = $bedaplan_result->fetch_assoc();
+	$status_login = $status_raw["status_wt"];
 
-echo "Mitarbeiter: <br>";
-echo $current_user;
-echo "<br><br>Arbeitsbeginn:<br>";
-echo $uhrzeit;
+
+if ($status_login==1)
+ {
+ // user is logged in, so show error message
+ echo "<b>Mitarbeiter ist bereits eingeloggt !!!</b>";
+ }
+else
+ {
+ //user is not logged in so start the login process
+  $bedaplan_query = "INSERT INTO worktime (wt_employee, wt_start, wt_sort) VALUES ('$current_user',NOW() ,'$datum')";
+  $bedaplan_result = mysqli_query($db, $bedaplan_query);
+  // set the status of worktime to 1 
+  $bedaplan_query = "UPDATE status SET status_wt = '1' WHERE  status_employee = '$current_user'";
+  $bedaplan_result = mysqli_query($db, $bedaplan_query);
+  echo "Mitarbeiter: <br>";
+  echo $current_user;
+  echo "<br><br>Arbeitsbeginn:<br>";
+  echo $uhrzeit;
+
+ }
+
+
+
 
 ?>
 <script type="text/javascript">
