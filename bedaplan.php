@@ -1,7 +1,7 @@
 
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "username", "userpassword", "database");
+$db = mysqli_connect("localhost", "user", "password", "database");
 
 // and show if there any errors
 if(!$db)
@@ -10,7 +10,7 @@ if(!$db)
 }
 	$timestamp = time();
 	$datum = date("d.m.Y",$timestamp);
-	$bedaplan_query = "SELECT * FROM project WHERE project_date = '$datum' AND project_done = '0' AND project_employee = 'sbodner'";
+	$bedaplan_query = "SELECT * FROM project WHERE project_date = '$datum' AND project_done <= '1' AND project_employee = 'sbodner'";
 	$bedaplan_result = mysqli_query($db, $bedaplan_query);
 	$row = $bedaplan_result->fetch_assoc();
 	$current_nr = $row["project_nr"];
@@ -25,46 +25,39 @@ if(!$db)
  <img src="http://213.23.35.50/bedaplan/bedaplanlogo.jpg">
   <table border="3" frame="void">
    <tr>
-
-      <td width="260">
- 	<!-- Kostenstelle hier erfassen -->
-	Kostenstelle ausw&auml;len:<br>
-	<form action="input_button.htm">
-	  <p>
-    	   <textarea cols="20" rows="1" name="kostenstelle"></textarea><br>
-           <input type="button" name="beton" value="Beton"
-           onclick="this.form.kostenstelle.value='Kostenstelle Beton'">
-           <input type="button" name="dach" value="Dach"
-           onclick="this.form.kostenstelle.value='Kostenstelle Dach'">
-          </p>
-	  <p>
-	    <select name="projektname" size="1">
-	     <option>Kreissparkasse</option>
-	     <option>Flughafen</option>
-	     <option>Halle Nürnberg</option>
-	     <option>Bunkerumbau</option>
-    	    </select>
-          </p>
-        </form>
-      </td>
-
 <!-- load the project description from the database and show it
      for this compare the projektdate with the current-date and the status
      of the project -->
       <td width="260">
-       Projektbeschreibung:<br>
+ 	Projektbeschreibung:<br>
        <textarea cols="20" rows="5" name="projekttext"><?php
 	// here we look after the current date        
 	$timestamp = time();
 	$datum = date("d.m.Y",$timestamp);
 	
 	// select the project after status, current daten and employee
-	$bedaplan_query = "SELECT * FROM project WHERE project_date = '$datum' AND project_done = '0' AND project_employee = 'sbodner'";
+	$bedaplan_query = "SELECT * FROM project WHERE project_date = '$datum' AND project_done < '2' AND project_employee = 'sbodner'";
 	$bedaplan_result = mysqli_query($db, $bedaplan_query);
 	$row = $bedaplan_result->fetch_assoc();
 	echo $row["project_description"];
         ?>
        </textarea><br>
+      </td>
+
+
+      <td width="260">
+	Nachricht von der Zentrale:<br>
+<!-- Here is a possiblity to send messages to the employee -->
+	<textarea cols="20" rows="5" name="nachricht"><?php
+	
+	// select the project after status, current daten and employee
+	$bedaplan_query = "SELECT * FROM message WHERE me_employee = 'sbodner'";
+	$bedaplan_result = mysqli_query($db, $bedaplan_query);
+	$row = $bedaplan_result->fetch_assoc();
+	echo $row["me_content"];
+        ?>
+       </textarea><br>
+       
       </td>
 
    </tr>
