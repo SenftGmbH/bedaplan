@@ -9,7 +9,7 @@
 <br>
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "username", "userpassword", "database");
+$db = mysqli_connect("localhost", "user", "password", "database");
 
 // and show if there any errors
 if(!$db)
@@ -41,6 +41,17 @@ $total = 0;
 
 //create the table with the worktime
 echo "<table border=1>";
+
+// table headers are here
+echo "<tr>";
+echo "<td>Arbeitsbeginn</td>";
+echo "<td>Arbeitsende</td>";
+echo "<td>Stunden</td>";
+echo "</tr>";
+
+
+
+
 while($row = $bedaplan_result->fetch_assoc()) 
     { 
 	echo "<tr>";
