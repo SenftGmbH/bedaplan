@@ -9,7 +9,7 @@
 <br>
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "username", "userpassword", "database");
+$db = mysqli_connect("localhost", "user", "password", "database");
 
 // and show if there any errors
 if(!$db)
@@ -17,7 +17,7 @@ if(!$db)
   exit("Verbindungsfehler: ".mysqli_connect_error());
 }
 
-
+
 
 
 
@@ -33,6 +33,14 @@ $bedaplan_result = mysqli_query($db, $bedaplan_query);
 echo "Offene Projekte:<br><br>";
 //create the table with the active projects
 echo "<table border=1>";
+echo "<tr>";
+echo "<td>Projektdatum</td>";
+echo "<td>Projektnummer</td>";
+echo "<td>Projektbeschreibung</td>";
+echo "<td>Projektmitarbeiter</td>";
+echo "</tr>";
+
+
 while($row = $bedaplan_result->fetch_assoc()) 
     { 
 	echo "<tr>";
