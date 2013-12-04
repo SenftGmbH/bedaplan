@@ -25,7 +25,7 @@ $timeget = time();
 $uhrzeit = date("H:i",$timeget); 
 $leerzeit = date_create('1971-01-01 0:0:0');
 $leer=  date_format($leerzeit, 'Y-m-d H:i:s');
-echo $leer;
+
 
 // here we query the status of status_wt to look if the employee has logged in yet
 $bedaplan_query = "SELECT * FROM status WHERE status_employee = '$current_employee'";
