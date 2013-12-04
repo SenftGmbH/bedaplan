@@ -9,7 +9,7 @@
 <br>
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "user", "password", "database");
+$db = mysqli_connect("localhost", "username", "password", "database");
 
 // and show if there any errors
 if(!$db)
@@ -37,7 +37,15 @@ $bedaplan_result = mysqli_query($db, $bedaplan_query);
 $total = 0;
 
 //create the table with the worktime
-echo "<table border=1>";
+echo "<table border='3' frame='void'>";
+
+// table headers are here
+echo "<tr>";
+echo "<td>Projektnummer</td>";
+echo "<td>Startzeit</td>";
+echo "<td>Endzeit</td>";
+echo "<td>Mitarbeiter</td>";
+echo "</tr>";
 
 while($row = $bedaplan_result->fetch_assoc()) 
     { 
