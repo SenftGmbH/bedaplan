@@ -17,11 +17,8 @@
     </p>
 
     <select name="project_employee" size="3">
-      <option>akoenig</option>
-      <option>dgrzesinski</option>
-      <option>sbodner</option>
-      <option>shagen</option>
-
+     <option>sbodner</option>
+   
     </select>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="submit" value=" Projekt Erstellen ">
