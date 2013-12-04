@@ -19,7 +19,9 @@
 	 <input type="button" style="width: 165px"  name="Erstelle" value="Projekt Erstellen" onclick="window.open('http://192.168.100.4/bedaplan/admin_create_project.php')">
 	 <input type="button" style="width: 165px"  name="Laufend" value="Zeige laufende Projekte" onclick="window.open('http://192.168.100.4/bedaplan/show_active_project.php')"><br>
 		 <input type="button" style="width: 165px"  name="Geplant" value="Zeige geplante Projekte" onclick="window.open('http://192.168.100.4/bedaplan/show_future_project.php')">
-		 <input type="button" style="width: 165px"  name="Geplant-Entfernen" value="L&ouml;sche geplantes Projekt" onclick="window.open('http://192.168.100.4/bedaplan/show_future_project.php')">
+		 <input type="button" style="width: 165px"  name="Geplant-Entfernen" value="L&ouml;sche geplantes Projekt" onclick="window.open('http://192.168.100.4/bedaplan/delete_future_project.php')"><br>
+	 <input type="button" style="width: 165px"  name="update" value="Benutzer hinzuf&uuml;gen" onclick="window.open('http://192.168.100.4/bedaplan/admin_adduser_project.php')">
+<input type="button" style="width: 165px"  name="update" value="Projekt wieder aktivieren" onclick="window.open('http://192.168.100.4/bedaplan/admin_reactivate_project.php')">
 <br><br><br><br><br>
       </td>
 
@@ -30,10 +32,25 @@
 	 <form action="http://192.168.100.4/bedaplan/message_to_employee.php" method="post">
            <input name="message_content" type="text" size="30" maxlength="64">
 	   <select name="current_user" size="3">
- 	      <option>akoenig</option>
-	      <option>dgrzesinski</option>
-	      <option>sbodner</option>
-	      <option>shagen</option>
+ 	      <option>sbodner</option>
+              <option>shagen</option>
+              <option>wandronnikow</option>
+              <option>dbull</option>
+              <option>cexner</option>
+              <option>cflemmer</option>
+              <option>mgallinat</option>
+              <option>agalster</option>         
+              <option>ngalster</option>
+              <option>oheinz</option>
+              <option>pkalb</option>
+              <option>wklaas</option>
+              <option>fkretke</option>
+              <option>vmiller</option>
+              <option>rnowokowski</option>
+              <option>enussbaum</option>
+              <option>rruehle</option>
+              <option>mschwarz</option>
+              <option>rlopez</option>
            </select>
            <input type="submit" value=" Nachricht zustellen ">
           </form>
@@ -48,10 +65,26 @@
 	  <form action="http://192.168.100.4/bedaplan/show_worktime_list.php" method="post">
            <p>Monat ausw&auml;hlen (03.2013): <input name="worktime_date" type="text" size="30" maxlength="30"></p>
 	   <select name="current_user" size="3">
- 	      <option>akoenig</option>
-	      <option>dgrzesinski</option>
-	      <option>sbodner</option>
-	      <option>shagen</option>
+ 	      <option>sbodner</option>
+              <option>shagen</option>
+              <option>wandronnikow</option>
+              <option>dbull</option>
+              <option>cexner</option>
+              <option>cflemmer</option>
+              <option>mgallinat</option>
+              <option>agalster</option>         
+              <option>ngalster</option>
+              <option>oheinz</option>
+              <option>pkalb</option>
+              <option>wklaas</option>
+              <option>fkretke</option>
+              <option>vmiller</option>
+              <option>rnowokowski</option>
+              <option>enussbaum</option>
+              <option>rruehle</option>
+              <option>mschwarz</option>
+              <option>rlopez</option>
+
            </select>
            <input type="submit" value=" Arbeitszeit auflisten ">
           </form>
@@ -64,10 +97,25 @@
 	  <form action="http://192.168.100.4/bedaplan/show_projecttime_list.php" method="post">
          
 	   <select name="current_user" size="3">
- 	      <option>akoenig</option>
-	      <option>dgrzesinski</option>
-	      <option>sbodner</option>
-	      <option>shagen</option>
+ 	      <option>sbodner</option>
+              <option>shagen</option>
+              <option>wandronnikow</option>
+              <option>dbull</option>
+              <option>cexner</option>
+              <option>cflemmer</option>
+              <option>mgallinat</option>
+              <option>agalster</option>         
+              <option>ngalster</option>
+              <option>oheinz</option>
+              <option>pkalb</option>
+              <option>wklaas</option>
+              <option>fkretke</option>
+              <option>vmiller</option>
+              <option>rnowokowski</option>
+              <option>enussbaum</option>
+              <option>rruehle</option>
+              <option>mschwarz</option>
+              <option>rlopez</option>
            </select>
            <input type="submit" value=" Projektzeit auflisten ">
           </form>
