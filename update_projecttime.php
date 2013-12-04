@@ -7,8 +7,10 @@
 <hr>
 <br>
 <?php
+// This PHP start the time monitoring for the project
+
 // connect to the database
-$db = mysqli_connect("localhost", "user", "password", "database");
+$db = mysqli_connect("localhost", "username", "password", "database");
 
 // and show if there any errors
 if(!$db)
@@ -40,8 +42,10 @@ if ($status_login==1)
  }
 else
  {
+  // here we have a change. now we create the entry and not update it anymore.
   // set the project start time to the current time
-  $bedaplan_query = "UPDATE projecttime SET pt_start= NOW() WHERE pt_nr = '$project_nr'"; 
+  // $bedaplan_query = "UPDATE projecttime SET pt_start= NOW() WHERE pt_nr = '$project_nr'"; 
+$bedaplan_query = "INSERT INTO projecttime (pt_nr, pt_employee, pt_start) VALUES ('$project_nr', '$project_employee', NOW())";
   $bedaplan_result = mysqli_query($db, $bedaplan_query);
 
   // set the project status to working
@@ -50,6 +54,11 @@ else
   // set the employee status to 1
   $bedaplan_query = "UPDATE status SET status_pt = '1' WHERE  status_employee = '$project_employee'";
   $bedaplan_result = mysqli_query($db, $bedaplan_query);
+  // set the number of persons who work on the projekt higher
+  $bedaplan_query = "UPDATE projectuser Set project_users = project_users+1 WHERE project_id = '$project_nr'";
+  echo $bedaplan_query;
+  $bedaplan_result = mysqli_query($db, $bedaplan_query);
+
 
   echo "Projektnummer: <br>";
   echo $project_nr;
@@ -59,6 +68,6 @@ else
 
 ?>
 <script type="text/javascript">
-     window.setTimeout("this.close()",5000);
+     window.setTimeout("this.close()",2000);
         </script>
 </body>
