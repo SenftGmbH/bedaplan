@@ -9,7 +9,7 @@
 <br>
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "user", "password", "database");
+$db = mysqli_connect("localhost", "username", "password", "database");
 
 // and show if there any errors
 if(!$db)
@@ -17,7 +17,7 @@ if(!$db)
   exit("Verbindungsfehler: ".mysqli_connect_error());
 }
 
-
+
 
 
 
