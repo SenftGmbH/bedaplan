@@ -17,6 +17,7 @@ $project_nr = $_POST["project_nr"];
 $project_description = $_POST["project_description"];
 $project_employee = $_POST["project_employee"];
 $project_done = '0';
+$map = $_POST["map"];
 
 // take a look at the data
 echo "Schauen wir was wir haben:<br><br>";
@@ -31,7 +32,7 @@ echo $project_employee;
 
 // lets insert the data with a sql query
 // first query insert the data into the project table and i set the number of users to 1 because the project is new
-$bedaplan_query = "INSERT INTO project (project_date, project_nr, project_description, project_employee, project_users, project_done) VALUES ('$project_date', '$project_nr', '$project_description', '$project_employee', '1', '$project_done')";
+$bedaplan_query = "INSERT INTO project (project_date, project_nr, project_description, project_employee, project_users, project_done, map) VALUES ('$project_date', '$project_nr', '$project_description', '$project_employee', '1', '$project_done', '$map')";
 $bedaplan_result = mysqli_query($db, $bedaplan_query);
 
 
