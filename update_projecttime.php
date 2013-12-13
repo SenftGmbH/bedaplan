@@ -1,6 +1,7 @@
 <html>
  <head>
   <title>bedaplan</title>
+<meta name="viewport" content="width=500" />
  </head>
  <body background="background.jpg">
  <img src="http://213.23.35.50/bedaplan/bedaplanlogo.jpg">
@@ -68,6 +69,6 @@ $bedaplan_query = "INSERT INTO projecttime (pt_nr, pt_employee, pt_start) VALUES
 
 ?>
 <script type="text/javascript">
-     window.setTimeout("this.close()",2000);
+     window.setTimeout("this.close()",4000);
         </script>
 </body>
