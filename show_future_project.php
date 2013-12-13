@@ -9,7 +9,7 @@
 <br>
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "user", "password", "database");
+$db = mysqli_connect("localhost", "username", "password", "database");
 
 // and show if there any errors
 if(!$db)
@@ -23,7 +23,7 @@ if(!$db)
 
 
 // create the quere for the worktime of the user
-$bedaplan_query = "SELECT * FROM project WHERE project_done = '0'";  
+$bedaplan_query = "SELECT * FROM project WHERE project_done = '0'"; 
 
 $bedaplan_result = mysqli_query($db, $bedaplan_query);
 
@@ -65,4 +65,7 @@ echo "</table>";
 
 
 ?>
+<p align="right">  
+<a href="javascript:window.close()"><img src="close.gif" alt="Fenster schliessen" border=0></a>
+</p>
 </html>
