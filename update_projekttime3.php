@@ -105,6 +105,6 @@ echo "<hr>";
 }
 ?>
 <script type="text/javascript">
-     window.setTimeout("this.close()",15000);
+     window.setTimeout("this.close()",4000);
         </script>
 </html>
