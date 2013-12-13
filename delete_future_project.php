@@ -72,4 +72,7 @@ echo "</table>";
 
 
 ?>
+<p align="right">  
+<a href="javascript:window.close()"><img src="close.gif" alt="Fenster schliessen" border=0></a>
+</p>
 </html>
