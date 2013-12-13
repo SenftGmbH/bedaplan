@@ -1,6 +1,7 @@
 <html>
  <head>
   <title>bedaplan</title>
+<meta name="viewport" content="width=500" />
  </head>
  <body background="background.jpg">
  <img src="http://213.23.35.50/bedaplan/bedaplanlogo.jpg">
@@ -8,7 +9,7 @@
 <br>
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "user", "password", "database");
+$db = mysqli_connect("localhost", "username", "password", "database");
 
 // and show if there any errors
 if(!$db)
@@ -56,6 +57,6 @@ else
 
 ?>
 <script type="text/javascript">
-     window.setTimeout("this.close()",10000);
+     window.setTimeout("this.close()",4000);
         </script>
 </html>
