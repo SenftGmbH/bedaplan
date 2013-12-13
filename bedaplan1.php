@@ -26,7 +26,20 @@ $mitarbeiter = $_GET["mitarbeiter"];
   <meta http-equiv="refresh" content="60;url=http://213.23.35.50/bedaplan/bedaplan1.php?mitarbeiter=<?php echo $mitarbeiter ?>">
  </head>
  <body background="background.jpg">
-
+<font size=1>
+<?php 
+$timeget = time(); 
+$uhrzeit = date("H:i",$timeget); 
+echo "Mitarbeiter:";
+echo $mitarbeiter;
+echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Uhrzeit:";
+echo $uhrzeit;
+?>
+</font>
  <img src="http://213.23.35.50/bedaplan/bedaplanlogo.jpg">
 
  <table border="3" frame="void">
@@ -47,7 +60,7 @@ $mitarbeiter = $_GET["mitarbeiter"];
 	$row = $bedaplan_result->fetch_assoc();
 	echo $row["project_description"];
         ?>
-       </textarea><br>
+       </textarea><br><a href="<?php echo $row['map']; ?>">Karte zum Ziel aufrufen</a>
       </td>
       <td>
 	Nachricht von der Zentrale:<br>
@@ -60,7 +73,7 @@ $mitarbeiter = $_GET["mitarbeiter"];
 	$row = $bedaplan_result->fetch_assoc();
 	echo $row["me_content"];
         ?>
-       </textarea><br>
+       </textarea><br><br>
       </td>
      </tr>
     </table>
@@ -73,18 +86,16 @@ $mitarbeiter = $_GET["mitarbeiter"];
 	<center>
 	<form action="input_button.htm">
 	  <p>
-    		Projektzeit Erfassen / Aktuelle Projektnummer:
+    		Projektzeit Erfassen / Projektnummer:
 		<?php echo $current_nr; ?><br>
 		<!-- here we show the current time in the field and add the timestamp to the database -->
-	        <input type="button" name="Ankunft" value="Ankunft" Style="WIDTH:300" WIDTH="300"  onclick="window.open('http://213.23.35.50/bedaplan/update_projecttime.php?current_nr=<?php echo $current_nr ?>&current_user=<?php echo $mitarbeiter ?>')">
+	        <a href="http://213.23.35.50/bedaplan/f_update_projecttime.php?current_nr=<?php echo $current_nr ?>&current_user=<?php echo $mitarbeiter ?>"  target="_blank"><img src="ankunft.jpg" border=0></a>
 		
 
 		
 
 				
-		<br>
-	        <input type="button" name="Abfahrt" value="Abfahrt" Style="WIDTH:300" WIDTH="300"
-	        onclick="window.open('http://213.23.35.50/bedaplan/update_projecttime2.php?current_nr=<?php echo $current_nr ?>&current_user=<?php echo $mitarbeiter ?>')">
+		<a href="http://213.23.35.50/bedaplan/f_update_projecttime2.php?current_nr=<?php echo $current_nr ?>&current_user=<?php echo $mitarbeiter ?>"  target="_blank"><img src="abfahrt.jpg" border=0> </a>
 
 		<br>
           </p>
@@ -101,12 +112,12 @@ $mitarbeiter = $_GET["mitarbeiter"];
 	  <p>
     		<center>
 		 Arbeitszeit Erfassung:<br>
-	        <input type="button" name="Arbeitsbeginn" value="Arbeitsbeginn" Style="WIDTH:300" WIDTH="300"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_worktime.php?current_nr=&current_user=<?php echo $mitarbeiter ?>')"><br>
-	        <input type="button" name="Arbeitsende" value="Arbeitsende"Style="WIDTH:300" WIDTH="300"
-	        onclick="window.open('http://213.23.35.50/bedaplan/update_worktime.php?current_nr=&current_user=<?php echo $mitarbeiter ?>')"><br>
-                <input type="button" name="Krank" value="Krank"Style="WIDTH:300" WIDTH="300"
-	        onclick="this.form.textfeld.value='Krank'">
+	        <a href="http://213.23.35.50/bedaplan/f_insert_worktime.php?current_user=<?php echo $mitarbeiter ?>" target="_blank"><img src="arbeitsbeginn.jpg" border=0></a>
+	        <a href="http://213.23.35.50/bedaplan/f_update_worktime.php?current_user=<?php echo $mitarbeiter ?>" target="_blank"><img src="arbeitsende.jpg" border=0></a><br>
+		
+		<a href="http://213.23.35.50/bedaplan/f_insert_ill.php?current_user=<?php echo $mitarbeiter ?>" target="_blank"><img src="krank.jpg" border=0></a>
+
+		<a href="http://213.23.35.50/bedaplan/f_insert_free.php?current_user=<?php echo $mitarbeiter ?>" target="_blank"><img src="frei.jpg" border=0></a>
                 </center>
           </p>
         </form>
@@ -116,47 +127,30 @@ $mitarbeiter = $_GET["mitarbeiter"];
   <tr>
    <td>
 Fahrzeug ausw&auml;hlen:<br>
-	 <input type="button" name="RE-SE-428" value="RE-SE-428" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-428')">
-	 <input type="button" name="RE-SE-102" value="RE-SE-426" Style="WIDTH:110" WIDTH="110"
+
+	 <input type="button" name="RE-SE-426" value="RE-SE-426" Style="WIDTH:110" WIDTH="110"
 	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-426')">
-	 <input type="button" name="RE-SE-103" value="RE-SE-354" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-354')">
-	 <input type="button" name="RE-SE-104" value="RE-SE-1060" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-1060')"><br>
-	 <input type="button" name="RE-SE-105" value="RE-SE-355" Style="WIDTH:110" WIDTH="110"
+	 <input type="button" name="RE-SE-1060" value="RE-SE-1060" Style="WIDTH:110" WIDTH="110"
+	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-1060')">
+	 <input type="button" name="RE-SE-1050" value="RE-SE-1050" Style="WIDTH:110" WIDTH="110"
+	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-1050')">
+	 <input type="button" name="RE-SE-1030" value="RE-SE-1030" Style="WIDTH:110" WIDTH="110"
+	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-1030')"><br>
+
+	 <input type="button" name="RE-SE-2020" value="RE-SE-2020" Style="WIDTH:110" WIDTH="110"
+	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-2020')">
+
+	 <input type="button" name="RE-SE-155" value="RE-SE-355" Style="WIDTH:110" WIDTH="110"
 	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-355')">
 
-	 <input type="button" name="RE-SE-105" value="RE-SE-1030" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-1030')">
-
-	 <input type="button" name="RE-SE-105" value="RE-SE-131" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-131')">
-
-	 <input type="button" name="RE-SE-105" value="RE-SE-206" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-206')"><br>
-
-	 <input type="button" name="RE-SE-105" value="RE-SE-191" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-191')">
-
-	 <input type="button" name="RE-SE-105" value="RE-SE-1080" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-1080')">
-
-	 <input type="button" name="RE-SE-105" value="RE-SE-1011" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-1011')">
-
-	 <input type="button" name="RE-SE-105" value="RE-SE-1033" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-1033')"><br>
- 
-	 <input type="button" name="RE-SE-105" value="RE-SE-72" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-72')">
-
-	 <input type="button" name="RE-SE-105" value="RE-SE-1120" Style="WIDTH:110" WIDTH="110"
+	 <input type="button" name="RE-SE-1120" value="RE-SE-1120" Style="WIDTH:110" WIDTH="110"
 	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-1120')">
 
-	 <input type="button" name="RE-SE-105" value="RE-SE-1050" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-1050')">
+	 <input type="button" name="RE-SE-2040" value="RE-SE-2040" Style="WIDTH:110" WIDTH="110"
+	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-2040')"><br>
 
+	 <input type="button" name="RE-SE-130" value="RE-SE-130" Style="WIDTH:110" WIDTH="110"
+	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-130')">
 
 
    </td>
@@ -194,7 +188,7 @@ Fahrzeug ausw&auml;hlen:<br>
  </table>
 
 <font size=1>Projekthomepage: <a href="https://github.com/SenftGmbH" alt="Projektseite">https://github.com/SenftGmbH</a><br>
-bedaplan version 1 03.12.2013
+bedaplan version 1 10.12.2013
 </font>
   
  </body>
