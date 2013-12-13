@@ -14,11 +14,13 @@
     <select name="project_employee" size="3">
      <option>sbodner</option>
      
+
     </select>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="submit" value=" Projekt Erstellen ">
   </form>
-  
-
+<p align="right">  
+<a href="javascript:window.close()"><img src="close.gif" alt="Fenster schliessen" border=0></a>
+</p>
  <body>
 </html>
