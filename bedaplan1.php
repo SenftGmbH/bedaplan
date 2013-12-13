@@ -1,4 +1,3 @@
-
 <?php
 // connect to the database
 $db = mysqli_connect("localhost", "username", "password", "database");
@@ -188,7 +187,7 @@ Fahrzeug ausw&auml;hlen:<br>
  </table>
 
 <font size=1>Projekthomepage: <a href="https://github.com/SenftGmbH" alt="Projektseite">https://github.com/SenftGmbH</a><br>
-bedaplan version 1 10.12.2013
+bedaplan version 1 13.12.2013
 </font>
   
  </body>
