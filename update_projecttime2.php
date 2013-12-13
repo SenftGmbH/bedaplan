@@ -1,6 +1,8 @@
 <html>
  <head>
   <title>bedaplan</title>
+
+<meta name="viewport" content="width=500" />
  </head>
  <body background="background.jpg">
  <img src="http://213.23.35.50/bedaplan/bedaplanlogo.jpg">
@@ -48,9 +50,9 @@ else
   $bedaplan_result = mysqli_query($db, $bedaplan_query);
 
 
+  echo "<b>Mitarbeiter wurde am Projekt abgemeldet</b>";
 
 
-// 
   $bedaplan_query = "UPDATE projectuser Set project_users = project_users-1 WHERE project_id = '$project_nr'";
   $bedaplan_result = mysqli_query($db, $bedaplan_query);
 
@@ -78,6 +80,6 @@ else
 }
 ?>
 <script type="text/javascript">
-     window.setTimeout("this.close()",2000);
+     window.setTimeout("this.close()",4000);
         </script>
 </html>
