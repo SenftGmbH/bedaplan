@@ -14,12 +14,13 @@ $current_nr = $_GET["current_nr"];
  </head>
  <body background="background.jpg">
  <img src="http://213.23.35.50/bedaplan/bedaplanlogo.jpg">
-Ankunft f&uuml;r Mitarbeiter <?php echo $mitarbeiter ?> und Projektnummer <?php echo $current_nr ?>
+Arbeitsbeginn f&uuml;r Mitarbeiter <?php echo $mitarbeiter ?>
 <br><br>
 <center>
- <a href="http://213.23.35.50/bedaplan/update_projecttime.php?current_nr=<?php echo $current_nr ?>&current_user=<?php echo $mitarbeiter ?>"  target="_blank"><img src="ankunft.jpg" border=0></a><br><br><br>
+ <a href="http://213.23.35.50/bedaplan/update_worktime.php?current_user=<?php echo $mitarbeiter ?>"  target="_blank"><img src="arbeitsende.jpg" border=0></a><br><br><br>
 
  <a href="javascript:window.close()"><img src="hauptseite.jpg" border=0></a>
 </center>  
  </body>
 </html>
+
