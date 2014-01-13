@@ -10,8 +10,8 @@
   <!-- Reciving the project data and send it to adduser_project.php -->
   Bitte geben Sie den Mitarbeiter und das Datum ein f&uuml;r die Projektliste<br>
   <form action="http://213.23.35.50/bedaplan/sort_project1.php" method="post">
-    <p>Projektdatum:<input name="project_date" type="text" size="30" maxlength="30"></p>
-    <p>Mitarbeiter:<input name="project_user" type="text" size="30" maxlength="30"></p>
+    <p>Projektdatum:<input name="project_date" type="text" size="30" maxlength="30">-< Datum eingeben z.b. 14.01.2014</p>
+    <p>Mitarbeiter:<input name="project_user" type="text" size="30" maxlength="30"><- Benutzer eingeben z.b. sbodner</p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="submit" value=" Projektliste zeigen ">
   </form>
