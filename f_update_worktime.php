@@ -23,4 +23,3 @@ Arbeitsbeginn f&uuml;r Mitarbeiter <?php echo $mitarbeiter ?>
 </center>  
  </body>
 </html>
-
