@@ -1,6 +1,7 @@
+
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "username", "password", "database");
+$db = mysqli_connect("localhost", "user", "password", "database");
 
 // and show if there any errors
 if(!$db)
@@ -31,11 +32,7 @@ $timeget = time();
 $uhrzeit = date("H:i",$timeget); 
 echo "Mitarbeiter:";
 echo $mitarbeiter;
-echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Uhrzeit:";
+echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Uhrzeit:";
 echo $uhrzeit;
 ?>
 </font>
@@ -48,6 +45,9 @@ echo $uhrzeit;
      <tr>
       <td>
 	Projektbeschreibung:<?php echo "$current_nr"; ?><br>
+
+
+      <!-- this is the old textarea, the output if fine but scrolling bad 
        <textarea cols="25" rows="5" name="projekttext"><?php
 	// here we look after the current date        
 	$timestamp = time();
@@ -59,12 +59,31 @@ echo $uhrzeit;
 	$row = $bedaplan_result->fetch_assoc();
 	echo $row["project_description"];
         ?>
-       </textarea><br><a href="<?php echo $row['map']; ?>">Karte zum Ziel aufrufen</a>
+       </textarea>
+       -->
+       <!-- the new textarea opens no keybord for scrolling on the mobile device, but no next-line at the text -->
+       <div style="width:230px; height: 140px; overflow: scroll; background: white; border: 1px solid black">
+       <?php
+       // lets get the current date
+       $timestamp = time();
+       $datum = date("d.m.Y",$timestamp);
+       // select the project after status, current date and employee
+       $bedaplan_query = "SELECT * FROM project WHERE project_date = '$datum' AND project_done < '2' AND project_employee = '$mitarbeiter'";
+       $bedaplan_result = mysqli_query($db, $bedaplan_query);
+       $row = $bedaplan_result->fetch_assoc();
+       echo $row["project_description"];
+       
+       ?>
+       
+       </div>
+       
+       <br><?php $infotext =  $row['map']; ?>
       </td>
       <td>
 	Nachricht von der Zentrale:<br>
         <!-- Here is a possiblity to send messages to the employee -->
-	<textarea cols="25" rows="5" name="nachricht"><?php
+	<div style="width:230px; height: 120px; overflow: scroll; background: white; border: 1px solid black">
+	<?php
 	
 	// select the project after status, current daten and employee
 	$bedaplan_query = "SELECT * FROM message WHERE me_employee = '$mitarbeiter'";
@@ -72,7 +91,8 @@ echo $uhrzeit;
 	$row = $bedaplan_result->fetch_assoc();
 	echo $row["me_content"];
         ?>
-       </textarea><br><br>
+       </div>
+       <a href="<?php echo $infotext; ?>">Routenplanung zum Ziel</a><br><br>
       </td>
      </tr>
     </table>
@@ -116,7 +136,7 @@ echo $uhrzeit;
 		
 		<a href="http://213.23.35.50/bedaplan/f_insert_ill.php?current_user=<?php echo $mitarbeiter ?>" target="_blank"><img src="krank.jpg" border=0></a>
 
-		<a href="http://213.23.35.50/bedaplan/f_insert_free.php?current_user=<?php echo $mitarbeiter ?>" target="_blank"><img src="frei.jpg" border=0></a>
+		<a href="http://213.23.35.50/bedaplan/f_insert_free.php?current_user=<?php echo $mitarbeiter ?>" target="_blank"><img src="abwesend2.jpg" border=0></a>
                 </center>
           </p>
         </form>
@@ -158,38 +178,47 @@ Fahrzeug ausw&auml;hlen:<br>
   <tr>
    <td>
 <!-- further projects of the day appears in this field ... -->
-        Weitere Tagesprojekte:
+        Weitere Tagesprojektet:<br><hr>
 <?php 
         $bedaplan_query = "SELECT * FROM project WHERE project_done = '0' AND project_employee = '$mitarbeiter' AND project_date = '$datum'"; 
         $bedaplan_result = mysqli_query($db, $bedaplan_query);
         //create the table with the active projects
-        echo "<table border='3' frame='void'>";
-       // table headers are here
        
+       // table headers are here
+       $sorting = 1;
        while($row = $bedaplan_result->fetch_assoc()) 
+
         { 
+
+        echo "Baustelle: ";
+        echo $sorting;
+	$sorting = $sorting + 1 ;
+        echo "<br>";
+        echo "<table border='3' frame='void'>";
 	echo "<tr>";
 	
-	echo "<td style='width:200px' bgcolor='#FFFFFF'>";
+	echo "<td style='width:600px' bgcolor='#FFFFFF'>";
 	echo $row["project_description"];
 	echo "</td>";
 	
 	echo "</td>";
 	echo "</tr>";
+ echo "</table>";
         } 
 
-       echo "</table>";
+      
 
 ?>
    </td>
   </tr>
 
  </table>
-
+<p align="right">
+<font size=2> <a href="http://213.23.35.50/bedaplan/more.php?current_user=<?php echo $mitarbeiter ?>">mehr</a></font>
+</p>
 <font size=1>Projekthomepage: <a href="https://github.com/SenftGmbH" alt="Projektseite">https://github.com/SenftGmbH</a><br>
-bedaplan version 1 13.12.2013
+bedaplan version 1 10.01.2014
 </font>
   
  </body>
 </html>
-
