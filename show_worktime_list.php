@@ -9,7 +9,7 @@
 <br>
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "username", "password", "database");
+$db = mysqli_connect("localhost", "user", "password", "database");
 
 // and show if there any errors
 if(!$db)
@@ -59,12 +59,39 @@ while($row = $bedaplan_result->fetch_assoc())
 	echo $row["wt_start"];
 	echo "</td>";
  	echo "<td>";
-	echo $row["wt_stop"];
+	// looking if the employee logged out or it is a running day
+	if ($row["wt_stop"] == '1971-01-01 00:00:00')
+ 	 {
+ 	  echo "laufend";
+         }
+	 else
+	 {
+	  echo $row["wt_stop"];
+	 }
 	echo "</td>";
 	echo "<td>";
-	$time_difference = strtotime($row["wt_stop"]) - strtotime($row["wt_start"]);
-	$total = $total + $time_difference;
-	echo round ($time_difference/60/60,2);
+	if ($row["wt_stop"] == '1971-01-01 00:00:00')
+         {
+	  echo "-";
+ 	 }
+	else
+ 	 {
+	  if ($row["wt_stop"] == '1971-01-01 00:00:01')
+	   {
+	    echo "<font color='red'>Zeitkorrektur erforderlich!!!</font>";
+	   }
+	   else
+	   {
+	    $time_difference = strtotime($row["wt_stop"]) - strtotime($row["wt_start"]);
+	    echo gmdate("H:i", $time_difference);
+	    $time_difference = $time_difference - 2700;
+	    echo "<br>Neue Arbeitszeit:<br>";
+	    $total = $total + $time_difference;
+	    echo gmdate("H:i", $time_difference);
+	    echo "<br>";
+	   }	
+	 }
+	// echo round ($time_difference/60/60,2);
 	echo "</td>";
 	echo "</tr>";
     } 
@@ -73,8 +100,17 @@ echo "</table>";
 echo "<br><br>";
 echo "Totale Arbeitszeit: ";
 echo "<b>";
-echo round($total/60/60,2);
+echo gmdate("H:i", $total);
 echo "</b>";
+// Old output format, i think invalid
+// $diff = $total;
+// $factor = intval( $diff/3600 );
+// $hours = $factor;
+// $diff  = $diff - $factor*3600;
+// $factor = intval( $diff/60 );
+// $minutes = $factor;
+// $seconds = $diff - ( $factor * 60 );
+// echo "$hours:$minutes:$seconds \n";
 
 
 
