@@ -9,7 +9,7 @@
 <br>
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "username", "password", "database");
+$db = mysqli_connect("localhost", "user", "password", "database");
 
 // and show if there any errors
 if(!$db)
