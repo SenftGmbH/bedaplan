@@ -10,7 +10,7 @@
 // This PHP stop the projecttime but let the projekt open
 
 // connect to the database
-$db = mysqli_connect("localhost", "username", "password", "database");
+$db = mysqli_connect("localhost", "user", "database", "password");
 
 // and show if there any errors
 if(!$db)
