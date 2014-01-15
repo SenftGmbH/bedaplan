@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 12. Dezember 2013 um 14:08
+-- Erstellungszeit: 15. Januar 2014 um 06:53
 -- Server Version: 5.1.72
 -- PHP-Version: 5.3.3-7+squeeze17
 
@@ -32,11 +32,6 @@ CREATE TABLE IF NOT EXISTS `current` (
   PRIMARY KEY (`current_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Daten für Tabelle `current`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -54,14 +49,6 @@ CREATE TABLE IF NOT EXISTS `employee` (
   PRIMARY KEY (`employee_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
---
--- Daten für Tabelle `employee`
---
-
-INSERT INTO `employee` (`employee_id`, `employee_name`, `employee_division`, `employee_payment`, `employee_bonus`, `employee_free1`, `employee_free2`) VALUES
-(1, 'sbodner', 1, 1, 0, 0, 0),
-
-
 -- --------------------------------------------------------
 
 --
@@ -76,11 +63,6 @@ CREATE TABLE IF NOT EXISTS `free` (
   PRIMARY KEY (`free_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Daten für Tabelle `free`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -93,12 +75,7 @@ CREATE TABLE IF NOT EXISTS `ill` (
   `ill_date` text NOT NULL,
   `ill_free` text NOT NULL,
   PRIMARY KEY (`ill_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Daten für Tabelle `ill`
---
-
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -112,14 +89,6 @@ CREATE TABLE IF NOT EXISTS `message` (
   `me_status` int(11) NOT NULL,
   `me_free1` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Daten für Tabelle `message`
---
-
-INSERT INTO `message` (`me_employee`, `me_content`, `me_status`, `me_free1`) VALUES
-('sbodner', 'Hallo anrufen den Chef', 0, ''),
-
 
 -- --------------------------------------------------------
 
@@ -145,11 +114,6 @@ CREATE TABLE IF NOT EXISTS `project` (
   PRIMARY KEY (`project_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Daten für Tabelle `project`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -164,12 +128,7 @@ CREATE TABLE IF NOT EXISTS `projecttime` (
   `pt_stop` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `pt_sort` varchar(10) NOT NULL,
   PRIMARY KEY (`pt_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Daten für Tabelle `projecttime`
---
-
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -182,11 +141,6 @@ CREATE TABLE IF NOT EXISTS `projectuser` (
   `project_id` bigint(20) NOT NULL,
   `project_users` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Daten für Tabelle `projectuser`
---
-
 
 -- --------------------------------------------------------
 
@@ -205,14 +159,6 @@ CREATE TABLE IF NOT EXISTS `status` (
   PRIMARY KEY (`status_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
---
--- Daten für Tabelle `status`
---
-
-INSERT INTO `status` (`status_id`, `status_employee`, `status_wt`, `status_pt`, `status_me`, `status_free1`, `status_free2`) VALUES
-(1, 'sbodner', 2, 2, 0, 0, 0),
-
-
 -- --------------------------------------------------------
 
 --
@@ -225,12 +171,7 @@ CREATE TABLE IF NOT EXISTS `vehicle` (
   `vehicle_date` varchar(10) NOT NULL,
   `vehicle_free` varchar(256) NOT NULL,
   PRIMARY KEY (`vehicle_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Daten für Tabelle `vehicle`
---
-
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -242,11 +183,6 @@ CREATE TABLE IF NOT EXISTS `version` (
   `programm` int(11) NOT NULL,
   `database` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Daten für Tabelle `version`
---
-
 
 -- --------------------------------------------------------
 
@@ -261,9 +197,4 @@ CREATE TABLE IF NOT EXISTS `worktime` (
   `wt_stop` timestamp NOT NULL DEFAULT '1971-01-01 00:00:00',
   `wt_sort` varchar(10) NOT NULL,
   PRIMARY KEY (`worktimeid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Daten für Tabelle `worktime`
---
-
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=57 ;
