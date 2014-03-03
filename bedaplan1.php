@@ -1,7 +1,7 @@
 
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "user", "password", "database");
+$db = mysqli_connect("localhost", "dbuser", "dbpassword", "dbname");
 
 // and show if there any errors
 if(!$db)
@@ -62,7 +62,7 @@ echo $uhrzeit;
        </textarea>
        -->
        <!-- the new textarea opens no keybord for scrolling on the mobile device, but no next-line at the text -->
-       <div style="width:230px; height: 140px; overflow: scroll; background: white; border: 1px solid black">
+       <div style="width:230px; height: 162px; overflow: scroll; background: white; border: 1px solid black">
        <?php
        // lets get the current date
        $timestamp = time();
@@ -72,7 +72,7 @@ echo $uhrzeit;
        $bedaplan_result = mysqli_query($db, $bedaplan_query);
        $row = $bedaplan_result->fetch_assoc();
        echo $row["project_description"];
-       
+       $infofile = $row["project_free1"];
        ?>
        
        </div>
@@ -92,7 +92,27 @@ echo $uhrzeit;
 	echo $row["me_content"];
         ?>
        </div>
-       <a href="<?php echo $infotext; ?>">Routenplanung zum Ziel</a><br><br>
+       <!--<a href="<?php echo $infotext; ?>">Routenplanung zum Ziel</a><br><br>-->
+
+
+<input type="button" name="Routenplanung zum Ziel" value="Routenplanung zum Ziel" 
+	        onclick="window.open('<?php echo $infotext ?>')">
+      <?php
+	if ($infofile == "")
+	{
+	echo "<br>";
+	
+	}
+	else
+	{
+	$filename = "http://213.23.35.50/bedaplan/uploads/".$infofile;
+	echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='$filename' >Weitere Dokumente</a>";	
+	}
+	?>
+<br>
+
+
+
       </td>
      </tr>
     </table>
@@ -147,29 +167,32 @@ echo $uhrzeit;
    <td>
 Fahrzeug ausw&auml;hlen:<br>
 
-	 <input type="button" name="RE-SE-426" value="RE-SE-426" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-426')">
-	 <input type="button" name="RE-SE-1060" value="RE-SE-1060" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-1060')">
-	 <input type="button" name="RE-SE-1050" value="RE-SE-1050" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-1050')">
-	 <input type="button" name="RE-SE-1030" value="RE-SE-1030" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-1030')"><br>
+	 <input type="button" name="RE" value="RE" Style="WIDTH:110" WIDTH="110"
+	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE')">
+	 <input type="button" name="RE" value="RE" Style="WIDTH:110" WIDTH="110"
+	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE')">
+	 <input type="button" name="RE" value="RE" Style="WIDTH:110" WIDTH="110"
+	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE')">
+	 <input type="button" name="RE" value="RE" Style="WIDTH:110" WIDTH="110"
+	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE')"><br>
 
-	 <input type="button" name="RE-SE-2020" value="RE-SE-2020" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-2020')">
+	 <input type="button" name="RE" value="RE" Style="WIDTH:110" WIDTH="110"
+	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE')">
 
-	 <input type="button" name="RE-SE-155" value="RE-SE-355" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-355')">
+	 <input type="button" name="RE" value="RE" Style="WIDTH:110" WIDTH="110"
+	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE')">
 
-	 <input type="button" name="RE-SE-1120" value="RE-SE-1120" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-1120')">
+	 <input type="button" name="RE" value="RE" Style="WIDTH:110" WIDTH="110"
+	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE')">
 
-	 <input type="button" name="RE-SE-2040" value="RE-SE-2040" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-2040')"><br>
+	 <input type="button" name="RE" value="RE" Style="WIDTH:110" WIDTH="110"
+	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE')"><br>
 
-	 <input type="button" name="RE-SE-130" value="RE-SE-130" Style="WIDTH:110" WIDTH="110"
-	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE-SE-130')">
+	 <input type="button" name="RE" value="RE" Style="WIDTH:110" WIDTH="110"
+	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE')">
+
+ <input type="button" name="RE" value="RE" Style="WIDTH:110" WIDTH="110"
+	        onclick="window.open('http://213.23.35.50/bedaplan/insert_vehicle.php?current_user=<?php echo $mitarbeiter ?>&vehicle=RE')">
 
 
    </td>
@@ -214,11 +237,13 @@ Fahrzeug ausw&auml;hlen:<br>
 
  </table>
 <p align="right">
-<font size=2> <a href="http://213.23.35.50/bedaplan/more.php?current_user=<?php echo $mitarbeiter ?>">mehr</a></font>
+
+<input type="button" name="mehr" value="mehr" onclick="window.open('http://213.23.35.50/bedaplan/more.php?current_user=<?php echo $mitarbeiter ?>&project_nr=<?php echo $current_nr ?>')">
+
 </p>
 <font size=1>Projekthomepage: <a href="https://github.com/SenftGmbH" alt="Projektseite">https://github.com/SenftGmbH</a><br>
 bedaplan version 1 10.01.2014
 </font>
-  
+
  </body>
 </html>
