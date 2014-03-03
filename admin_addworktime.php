@@ -15,7 +15,24 @@
     <p>Arbeitszeit Monat: <input name="wt_sort" type="text" size="30" maylenght="30" value="01.2014"></p>
     <select name="current_user" size="3">
      <option>sbodner</option>
-     
+     <option>shagen</option>
+     <option>wandronnikow</option>
+     <option>dbull</option>
+     <option>cexner</option>
+     <option>cflemmer</option>
+     <option>mgallinat</option>
+     <option>agalster</option>
+     <option>ngalster</option>
+     <option>oheinz</option>
+     <option>pkalb</option>
+     <option>wklaas</option>
+     <option>fkretke</option>
+     <option>vmiller</option>
+     <option>rnowokowski</option>
+     <option>enussbaum</option>
+     <option>rruehle</option>
+     <option>mschwarz</option>
+     <option>plopez</option>
 
     </select>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
