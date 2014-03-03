@@ -13,24 +13,7 @@
     <p>Projektnummer: <input name="project_nr" type="text" size="30" maxlength="30"></p>
     <select name="project_employee" size="3">
      <option>sbodner</option>
-     <option>shagen</option>
-     <option>wandronnikow</option>
-     <option>dbull</option>
-     <option>cexner</option>
-     <option>cflemmer</option>
-     <option>mgallinat</option>
-     <option>agalster</option>
-     <option>ngalster</option>
-     <option>oheinz</option>
-     <option>pkalb</option>
-     <option>wklaas</option>
-     <option>fkretke</option>
-     <option>vmiller</option>
-     <option>rnowokowski</option>
-     <option>enussbaum</option>
-     <option>rruehle</option>
-     <option>mschwarz</option>
-     <option>plopez</option>
+    
 
     </select>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
