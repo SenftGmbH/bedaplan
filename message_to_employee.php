@@ -9,7 +9,7 @@
 <br>
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "user", "password", "database");
+$db = mysqli_connect("localhost", "dbuser", "dbpassword", "dbname");
 
 // and show if there any errors
 if(!$db)
@@ -31,7 +31,5 @@ echo "<hr>";
 echo $bedaplan_query;
 
 ?>
-<script type="text/javascript">
-     window.setTimeout("this.close()",5000);
-        </script>
+<a href="http://213.23.35.50/bedaplan/bedaplan_admin.php"><img src="close.gif" alt="Fenster schliessen" border=0></a>
 </body>
