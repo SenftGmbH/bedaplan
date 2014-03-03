@@ -9,7 +9,7 @@
 <br>
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "user", "password", "database");
+$db = mysqli_connect("localhost", "dbuser", "dbpassword", "dbname");
 
 // and show if there any errors
 if(!$db)
@@ -28,6 +28,7 @@ echo "<table border=1>";
 echo "<tr>";
 echo "<td>Startzeit</td>";
 echo "<td>Mitarbeiter</td>";
+echo "<td>Fahrzeug</td>";
 echo "</tr>";
 
 // lets show the data for the logged in employees
@@ -46,6 +47,18 @@ while($row = $bedaplan_result->fetch_assoc())
 	echo $row["status_employee"];
 
 	echo "</td>";
+
+
+	echo "<td>";
+	// Get the current date and create a sql query for the car that is used by the employee
+	$timestamp = time();
+	$datum = date("d.m.Y",$timestamp);
+	$bedaplan_query3 = "SELECT * FROM vehicle WHERE vehicle_employee = '$suche' AND vehicle_date = '$datum'";
+	$bedaplan_result3 = mysqli_query($db, $bedaplan_query3);
+	$row3 = $bedaplan_result3->fetch_assoc();
+	$car = $row3["vehicle_free"];
+	echo $car;
+	echo"</td>";
 	echo "</tr>";
 
     } 
