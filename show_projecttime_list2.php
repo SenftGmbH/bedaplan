@@ -1,3 +1,4 @@
+
 <html>
  <head>
   <title>bedaplan</title>
@@ -9,7 +10,7 @@
 <br>
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "user", "password", "database");
+$db = mysqli_connect("localhost", "dbuser", "dbpassword", "dbname");
 
 // and show if there any errors
 if(!$db)
@@ -45,6 +46,7 @@ echo "<td>Projektnummer</td>";
 echo "<td>Startzeit</td>";
 echo "<td>Endzeit</td>";
 echo "<td>Mitarbeiter</td>";
+echo "<td>Mitarbeiterhinweis</td>";
 echo "</tr>";
 
 while($row = $bedaplan_result->fetch_assoc()) 
@@ -62,7 +64,13 @@ while($row = $bedaplan_result->fetch_assoc())
 	echo "</td>";
 	echo "<td>";
 	echo $row["pt_employee"];
+	echo "</td>";
+	echo "<td>";
+	echo $row["pt_infotext"];
+	echo "</td>";
+
 	echo "</tr>";
+
     } 
 
 echo "</table>";
