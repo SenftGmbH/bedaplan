@@ -9,7 +9,7 @@
 <br>
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "user", "password", "database");
+$db = mysqli_connect("localhost", "dbuser", "dbpassword", "dbname");
 
 // and show if there any errors
 if(!$db)
@@ -83,9 +83,19 @@ while($row = $bedaplan_result->fetch_assoc())
 	   else
 	   {
 	    $time_difference = strtotime($row["wt_stop"]) - strtotime($row["wt_start"]);
-	    echo gmdate("H:i", $time_difference);
+	    // echo gmdate("H:i", $time_difference);
 	    $time_difference = $time_difference - 2700;
-	    echo "<br>Neue Arbeitszeit:<br>";
+
+            if ($time_difference > 28800)
+               {
+		// echo "Mehr als 8 Stunden";
+               }
+               else
+               {
+		// echo "Weniger als 8 Stunden";
+               }
+
+	   
 	    $total = $total + $time_difference;
 	    echo gmdate("H:i", $time_difference);
 	    echo "<br>";
@@ -100,17 +110,18 @@ echo "</table>";
 echo "<br><br>";
 echo "Totale Arbeitszeit: ";
 echo "<b>";
-echo gmdate("H:i", $total);
+
 echo "</b>";
-// Old output format, i think invalid
-// $diff = $total;
-// $factor = intval( $diff/3600 );
-// $hours = $factor;
-// $diff  = $diff - $factor*3600;
-// $factor = intval( $diff/60 );
-// $minutes = $factor;
-// $seconds = $diff - ( $factor * 60 );
-// echo "$hours:$minutes:$seconds \n";
+///Old output format, i think invalid
+echo "<br> Neues Format:<br>";
+$diff = $total;
+$factor = intval( $diff/3600 );
+$hours = $factor;
+$diff  = $diff - $factor*3600;
+$factor = intval( $diff/60 );
+$minutes = $factor;
+$seconds = $diff - ( $factor * 60 );
+echo "$hours:$minutes:$seconds \n";
 
 
 
