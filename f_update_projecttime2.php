@@ -1,25 +1,88 @@
-
-<?php
-
-$mitarbeiter = $_GET["current_user"];
-$current_nr = $_GET["current_nr"];
-	
-?>
-
 <html>
  <head>
   <title>bedaplan</title>
-  <meta name="viewport" content="width=500" />
-  <meta http-equiv="refresh" content="60;url=http://213.23.35.50/bedaplan/bedaplan1.php?mitarbeiter=<?php echo $mitarbeiter ?>">
  </head>
- <body background="background.jpg">
+ <body>
  <img src="http://213.23.35.50/bedaplan/bedaplanlogo.jpg">
-Abfahrt f&uuml;r Mitarbeiter <?php echo $mitarbeiter ?> und Projektnummer <?php echo $current_nr ?>
-<br><br>
-<center>
- <a href="http://213.23.35.50/bedaplan/update_projecttime2.php?current_nr=<?php echo $current_nr ?>&current_user=<?php echo $mitarbeiter ?>"  target="_blank"><img src="abfahrt.jpg" border=0></a><br><br><br>
+  <p align="right"><font size="5">Admin - Projektzeitauswertung nach Projektnummer</font></p>
+<hr>
+<br>
+<?php
+// connect to the database
+$db = mysqli_connect("localhost", "dbuser", "dbname", "dbpassword");
 
- <a href="javascript:window.close()"><img src="hauptseite.jpg" border=0></a>
-</center>  
- </body>
+// and show if there any errors
+if(!$db)
+{
+  exit("Verbindungsfehler: ".mysqli_connect_error());
+}
+
+
+// get the variables from the mainsite
+$project_nr = $_POST["project_nr"];
+
+
+
+
+
+// create the quere for the list of employees of the project
+$bedaplan_query = "SELECT * FROM projecttime WHERE pt_nr = '$project_nr'"; 
+
+$bedaplan_result = mysqli_query($db, $bedaplan_query);
+
+
+
+
+// set the total time to 0
+$total = 0;
+
+//create the table with the worktime
+echo "<table border='3' frame='void'>";
+
+// table headers are here
+echo "<tr>";
+echo "<td>Projektnummer</td>";
+echo "<td>Startzeit</td>";
+echo "<td>Endzeit</td>";
+echo "<td>Mitarbeiter</td>";
+echo "<td>Mitarbeiterhinweis</td>";
+echo "</tr>";
+
+while($row = $bedaplan_result->fetch_assoc()) 
+    { 
+	echo "<tr>";
+	echo "<td>";
+	echo $row["pt_nr"];
+	echo "</td>";
+
+	echo "<td>";
+	echo $row["pt_start"];
+	echo "</td>";
+ 	echo "<td>";
+	echo $row["pt_stop"];
+	echo "</td>";
+	echo "<td>";
+	echo $row["pt_employee"];
+	echo "</td>";
+	echo "<td>";
+	echo $row["pt_infotext"];
+	echo "</td>";
+
+	echo "</tr>";
+
+    } 
+
+echo "</table>";
+echo "<br><br>";
+echo "Totale Arbeitszeit: ";
+echo "<b>";
+echo round($total/60/60,2);
+echo "</b>";
+
+
+
+?>
+<p align="right">  
+<a href="javascript:window.close()"><img src="close.gif" alt="Fenster schliessen" border=0></a>
+</p>
 </html>
