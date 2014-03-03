@@ -1,4 +1,3 @@
-
 <?php
 
 $mitarbeiter = $_GET["current_user"];
@@ -23,3 +22,4 @@ Freier Tag Mitarbeiter <?php echo $mitarbeiter ?>
 </center>  
  </body>
 </html>
+
