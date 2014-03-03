@@ -2,6 +2,7 @@
 <?php
 
 $mitarbeiter = $_GET["current_user"];
+$project = $_GET["project_nr"];
 
 	
 ?>
@@ -15,7 +16,7 @@ $mitarbeiter = $_GET["current_user"];
  <body background="background.jpg">
  <img src="http://213.23.35.50/bedaplan/bedaplanlogo.jpg">
 <br>
-<font size="4">Weitere Funktionen f&uuml;r Mitarbeiter: <?php echo $mitarbeiter ?></font>
+<font size="4">Weitere Funktionen f&uuml;r Mitarbeiter: <?php echo $mitarbeiter ?> und Projekt <?php echo $project ?></font>
 <br><br>
 <center>
 <hr>
@@ -27,9 +28,16 @@ $mitarbeiter = $_GET["current_user"];
 Ausstempeln vergessen, Mitarbeiter wieder freischalten<br>
 <input type="button" style="width: 290px"  name="update" value="Arbeitsbeginn freischalten" onclick="window.open('http://213.23.35.50/bedaplan/more_emopen.php?current_employee=<?php echo $mitarbeiter ?>')">
 
- <br><br><br>
+<hr>
+ <br>Einen Hinweis zu diesem Tag hinterlegen<br><br>
+<input type="button" style="width: 290px"  name="update" value="Tagesnotiz hinzufügen" onclick="window.open('http://213.23.35.50/bedaplan/f_insert_ptinfo.php?current_employee=<?php echo $mitarbeiter ?>&current_nr=<?php echo $project ?>')">
+
 <br><br><br><br>
- <a href="http://213.23.35.50/bedaplan/bedaplan1.php?mitarbeiter=<?php echo $mitarbeiter ?>"><img src="hauptseite.jpg" border=0></a>
+
+
+<p align="center">  
+<a href="javascript:window.close()"><img src="hauptseite.jpg" alt="Fenster schliessen" border=0></a>
+</p>
 </center>  
  </body>
 </html>
