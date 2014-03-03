@@ -1,6 +1,6 @@
 <?php
 // connect to the database
-$db = mysqli_connect("localhost", "user", "password", "database");
+$db = mysqli_connect("localhost", "dbuser", "dbpassword", "dbname");
 
 // and show if there any errors
 if(!$db)
@@ -50,3 +50,6 @@ $bedaplan_result = mysqli_query($db, $bedaplan_query);
 
 
 ?>
+<p align="right">  
+<a href="javascript:window.close()"><img src="close.gif" alt="Fenster schliessen" border=0></a>
+</p>
